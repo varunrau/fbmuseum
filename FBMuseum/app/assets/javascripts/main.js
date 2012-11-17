@@ -45,7 +45,7 @@ var start = function() {
   scene.add(cam);
 
   // Insert code to control the camera
-  
+
   setup(); // This will set up the scene including rendering the map
 
   renderer = new t.WebGLRenderer();
@@ -55,3 +55,13 @@ var start = function() {
 
   document.addEventListener('mousemove', onDocumentMouseMove, false);
 };
+
+var animate = function() {
+    
+    requestAnimationFrame(animate);
+    render();
+};
+
+var render = function() {
+    
+}
