@@ -1,0 +1,2 @@
+var camera, scene, renderer;
+
