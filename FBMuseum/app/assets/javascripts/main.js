@@ -77,8 +77,19 @@ var setup = function() {
     for (var i = 0; i < mapWidth; i++) {
         for (var j = 0, m = map[i].length; j < m; j++) {
             if (map[i][j]) {
-                
+                // We want to use a different image for each of the walls.
+                // So we give the image a different texture
+                var wall = new t.Mesh(cube, materials[map[i][j]]);
+                wall.position.x = (i - mapWidth/2) * unitsize;
+                wall.position.y = wallheight/2;
+                wall.position.z = (j - mapWidth/2) * unitsize;
+                // Add the wall to the scene
+                scene.add(wall);
             }
         }
     }
+
+    var directionalLight = new t.DirectionalLight(0xffffff, 0.5);
+    directionalLight.position.set(0, 1, 0);
+    scene.add(directionalLight);
 }
