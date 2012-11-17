@@ -79,7 +79,7 @@ var setup = function() {
             if (map[i][j]) {
                 // We want to use a different image for each of the walls.
                 // So we give the image a different texture
-                var wall = new t.Mesh(cube, materials[map[i][j]]);
+                var wall = new t.Mesh(cube, photos[map[i][j]]);
                 wall.position.x = (i - mapWidth/2) * unitsize;
                 wall.position.y = wallheight/2;
                 wall.position.z = (j - mapWidth/2) * unitsize;
@@ -89,7 +89,11 @@ var setup = function() {
         }
     }
 
-    var directionalLight = new t.DirectionalLight(0xffffff, 0.5);
-    directionalLight.position.set(0, 1, 0);
-    scene.add(directionalLight);
+    var directionalLight1 = new t.DirectionalLight(0xF7EFBE, 0.7);
+    directionalLight1.position.set(0.5, 1, 0.5);
+    scene.add(directionalLight1);
+
+    var directionalLight2 = new t.DirectionalLight(0xF7EFBE, 0.5);
+    directionalLight2.position.set(-0.5, -1, -0.5);
+    scene.add(directionalLight2);
 }
