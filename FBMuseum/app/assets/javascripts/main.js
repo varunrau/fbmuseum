@@ -65,3 +65,20 @@ var animate = function() {
 var render = function() {
     
 }
+
+var setup = function() {
+    // Let's create the floor!
+    var floor = new t.Mesh(
+                    new t.CubeGeometry(mapWidth * unitsize, 10, maplength * unitsize),
+                    new t.MeshLambertMaterial({'#F4A460'}));
+    scene.add(floor);
+
+    // Let's create the walls
+    for (var i = 0; i < mapWidth; i++) {
+        for (var j = 0, m = map[i].length; j < m; j++) {
+            if (map[i][j]) {
+                
+            }
+        }
+    }
+}
