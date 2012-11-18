@@ -1,19 +1,21 @@
 // Some convenience variables
 var aspectRatio = window.innerWidth / window.innerHeight;
 var unitsize = 250;
-var wallheight = unitsize / 3;
+var wallheight = unitsize;
 var walkspeed = 100;
-var lookspeed = .075;
+var lookspeed = .045;
 var maplength = 10;
 var mapLength = mapLength;
 
 // A basic map. I'll write a script to generate this later.
 var map = [
+            
             [1, 0, 2],
             [3, 0, 4],
             [5, 0, 6],
             [7, 0, 8],
-            [9, 0, 10]
+            [9, 0, 10],
+            [0, 11, 0]
             ];
 var mapWidth = map.length;
 var mapHeight = map[0].length;
@@ -23,11 +25,29 @@ var t = THREE;
 var scene, cam, renderer, controls, clock, projector, model, skin;
 var mouse = { x: 0, y: 0};
 
-/*
+//new t.MeshLambertMaterial({color: 0xEDCBA0,
+
 var photos = [
-                new t.MeshBasicMaterial({color: #FF0000})
+                new t.MeshLambertMaterial({color: 0xEDCBA0,}),
+                new t.MeshLambertMaterial({color: 0xEDCBA0,}),
+                new t.MeshLambertMaterial({color: 0xEDCBA0,}),
+                new t.MeshLambertMaterial({color: 0xEDCBA0,}),
+                new t.MeshLambertMaterial({color: 0xEDCBA0,}),
+                new t.MeshLambertMaterial({color: 0xEDCBA0,}),
+                new t.MeshLambertMaterial({color: 0xEDCBA0,}),
+                new t.MeshLambertMaterial({color: 0xEDCBA0,}),
+                new t.MeshLambertMaterial({color: 0xEDCBA0,}),
+                new t.MeshLambertMaterial({color: 0xEDCBA0,}),
+                new t.MeshLambertMaterial({color: 0xEDCBA0,}),
+                new t.MeshLambertMaterial({color: 0xEDCBA0,}),
+                new t.MeshLambertMaterial({color: 0xEDCBA0,}),
+                new t.MeshLambertMaterial({color: 0xEDCBA0,}),
+                new t.MeshLambertMaterial({color: 0xEDCBA0,}),
+                new t.MeshLambertMaterial({color: 0xEDCBA0,}),
+                new t.MeshLambertMaterial({color: 0xEDCBA0,}),
+                new t.MeshLambertMaterial({color: 0xEDCBA0,}),
+                new t.MeshLambertMaterial({color: 0xEDCBA0,}),
                 ];
-*/
 
 // This is called when the document is ready. We'll show a simple start
 // screen then when the user is ready we'll start the main animation loop.
@@ -48,7 +68,7 @@ var start = function() {
   scene.fog = new t.FogExp2(0xD6F1FF, 0.0005); // We'll add fog, so we can see depth in this world
 
   cam = new t.PerspectiveCamera(60, aspectRatio, 1, 10000);
-  cam.position.y = unitsize * .2; // Raise the camera off the ground
+  cam.position.y = unitsize * .5; // Raise the camera off the ground
   scene.add(cam);
 
   // Insert code to control the camera
@@ -71,7 +91,7 @@ var onMouseMove = function(e) {
     e.preventDefault();
     mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
 	mouse.y = - (e.clientY / window.innerHeight) * 2 + 1;
-}
+};
 
 var animate = function() {
     
@@ -82,9 +102,8 @@ var animate = function() {
 var render = function() {
     var del = clock.getDelta();
     controls.update(del);
-    console.log(cam.position);
     renderer.render(scene, cam); // Repaint the scene
-}
+};
 
 var setup = function() {
     // Let's create the floor!
@@ -93,12 +112,7 @@ var setup = function() {
 			new t.MeshLambertMaterial({color: 0xEDCBA0,/*map: t.ImageUtils.loadTexture('images/floor-1.jpg')*/})
 	);
 	scene.add(floor);
-    //var floor = new t.Mesh(
-                    //new t.CubeGeometry(mapWidth * unitsize, 10, mapLength * unitsize),
-                    //new t.MeshBasicMaterial({color: 0xF4A460}));
-    //console.log(floor);
-    //scene.add(floor);
-    /*
+
     var cube = new t.CubeGeometry(unitsize, wallheight, unitsize);
     // Let's create the walls
     for (var i = 0; i < mapWidth; i++) {
@@ -115,7 +129,6 @@ var setup = function() {
             }
         }
     }
-    */
     var directionalLight1 = new t.DirectionalLight(0xF7EFBE, 0.7);
     directionalLight1.position.set(0.5, 1, 0.5);
     scene.add(directionalLight1);
@@ -123,4 +136,4 @@ var setup = function() {
     var directionalLight2 = new t.DirectionalLight(0xF7EFBE, 0.5);
     directionalLight2.position.set(-0.5, -1, -0.5);
     scene.add(directionalLight2);
-}
+};
