@@ -18,20 +18,20 @@ var mapWidth = map.length;
 var mapHeight = map[0].length;
 
 // Some more convenience methods
-var t = T
+var t = THREE;
 var scene, cam, renderer, controls, clock, projector, model, skin;
 var mouse = { x: 0, y: 0};
 
 // This is called when the document is ready. We'll show a simple start
 // screen then when the user is ready we'll start the main animation loop.
 $(document).ready(function() {
-    $('body').append('<div id="start-page">Are you Ready?</div>');
-    $('start-page').css({width: window.innerWidth, height: window.innerHeight}).one('click', function(e) {
-        e.preventDefault();
-        $(this).fadeOut();
+    //$('body').append('<div id="start-page">Are you Ready?</div>');
+    //$('start-page').css({width: window.innerWidth, height: window.innerHeight}).one('click', function(e) {
+        //e.preventDefault();
+        //$(this).fadeOut();
         start();
         animate();
-    })
+    //});
 });
 
 var start = function() {
@@ -45,6 +45,7 @@ var start = function() {
   scene.add(cam);
 
   // Insert code to control the camera
+  console.log('starting');
 
   setup(); // This will set up the scene including rendering the map
 
@@ -63,16 +64,17 @@ var animate = function() {
 };
 
 var render = function() {
-    
+    //TODO
 }
 
 var setup = function() {
     // Let's create the floor!
     var floor = new t.Mesh(
                     new t.CubeGeometry(mapWidth * unitsize, 10, maplength * unitsize),
-                    new t.MeshLambertMaterial({'#F4A460'}));
+                    new t.MeshLambertMaterial('#F4A460'));
     scene.add(floor);
 
+    var cube = new t.CubeGeometry(unitsize, wallheight, unitsize);
     // Let's create the walls
     for (var i = 0; i < mapWidth; i++) {
         for (var j = 0, m = map[i].length; j < m; j++) {
