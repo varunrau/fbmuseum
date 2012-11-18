@@ -5,6 +5,7 @@ var wallheight = unitsize / 3;
 var walkspeed = 100;
 var lookspeed = .075;
 var maplength = 10;
+var mapLength = mapLength;
 
 // A basic map. I'll write a script to generate this later.
 var map = [
@@ -51,7 +52,10 @@ var start = function() {
   scene.add(cam);
 
   // Insert code to control the camera
-  console.log('starting');
+  controls = new t.FirstPersonControls(cam);
+  console.log(controls);
+  controls.movementSpeed = walkspeed;
+  controls.lookSpeed = lookspeed;
 
   setup(); // This will set up the scene including rendering the map
 
@@ -60,8 +64,14 @@ var start = function() {
   renderer.domElement.style.backgroundColor = '#ADEAEA';
   document.body.appendChild(renderer.domElement); // Add our HTML canvas to the DOM
 
-  document.addEventListener('mousemove', onDocumentMouseMove, false);
+  document.addEventListener('mousemove', onMouseMove, false);
 };
+
+var onMouseMove = function(e) {
+    e.preventDefault();
+    mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+	mouse.y = - (e.clientY / window.innerHeight) * 2 + 1;
+}
 
 var animate = function() {
     
@@ -70,16 +80,24 @@ var animate = function() {
 };
 
 var render = function() {
-    console.log("rendering");
-    //TODO
+    var del = clock.getDelta();
+    controls.update(del);
+    console.log(cam.position);
+    renderer.render(scene, cam); // Repaint the scene
 }
 
 var setup = function() {
     // Let's create the floor!
     var floor = new t.Mesh(
-                    new t.CubeGeometry(mapWidth * unitsize, 10, maplength * unitsize),
-                    new t.MeshLambertMaterial('#F4A460'));
-    scene.add(floor);
+			new t.CubeGeometry(mapWidth * unitsize, 10, mapWidth * unitsize),
+			new t.MeshLambertMaterial({color: 0xEDCBA0,/*map: t.ImageUtils.loadTexture('images/floor-1.jpg')*/})
+	);
+	scene.add(floor);
+    //var floor = new t.Mesh(
+                    //new t.CubeGeometry(mapWidth * unitsize, 10, mapLength * unitsize),
+                    //new t.MeshBasicMaterial({color: 0xF4A460}));
+    //console.log(floor);
+    //scene.add(floor);
     /*
     var cube = new t.CubeGeometry(unitsize, wallheight, unitsize);
     // Let's create the walls

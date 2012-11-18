@@ -37,7 +37,7 @@ THREE.FirstPersonControls = function(object, domElement) {
     this.moveLeft = false;
     this.moveRight = false;
 
-    if (this.domElement == docuemnt) {
+    if (this.domElement == document) {
         this.viewHalfX = window.innerWidth / 2;
         this.viewHalfY = window.innerHeight / 2;
     } else {
@@ -126,12 +126,12 @@ THREE.FirstPersonControls = function(object, domElement) {
         }
     };
 
-    this.update = function(del) {
+     this.update = function(del) {
 
         // This part of the code is pretty self explanatory.
         var moveSpeed = 0;
 
-        moveSpeed = delta * this.movementSpeed;
+        moveSpeed = del * this.movementSpeed;
         
         if (this.moveForward) {
             this.object.translateZ(-(moveSpeed));
@@ -161,7 +161,7 @@ THREE.FirstPersonControls = function(object, domElement) {
             }
         }
 
-        var lookS = delta * this.lookSpeed;
+        var lookS = del * this.lookSpeed;
         this.lon += this.mouseX * lookS;
         if (this.lookVertical) {
             this.lat -= this.mouseY * lookS;
@@ -186,12 +186,12 @@ THREE.FirstPersonControls = function(object, domElement) {
     this.domElement.addEventListener('mousemove', bind(this, this.onMouseMove), false);
     this.domElement.addEventListener('mousedown', bind(this, this.onMouseDown), false);
     this.domElement.addEventListener('mouseup', bind(this, this.onMouseUp), false);
-    this.domElement.addEventListner('keydown', bind(this, this.onKeyDown), false);
+    this.domElement.addEventListener('keydown', bind(this, this.onKeyDown), false);
     this.domElement.addEventListener('keyup', bind(this, this.onKeyUp), false);
 
     function bind(obj, func) {
         return function() {
-            fn.apply(obj, arguments);
+            func.apply(obj, arguments);
         }
     }
 }
