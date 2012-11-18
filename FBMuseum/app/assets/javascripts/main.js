@@ -22,18 +22,11 @@ var t = THREE;
 var scene, cam, renderer, controls, clock, projector, model, skin;
 var mouse = { x: 0, y: 0};
 
+/*
 var photos = [
-                new t.MeshLambertMaterial({color: #FF0000}),
-                new t.MeshLambertMaterial({color: #FF0000}),
-                new t.MeshLambertMaterial({color: #FF0000}),
-                new t.MeshLambertMaterial({color: #FF0000}),
-                new t.MeshLambertMaterial({color: #FF0000}),
-                new t.MeshLambertMaterial{{color: #FF0000}},
-                new t.MeshLambertMaterial{{color: #FF0000}},
-                new t.MeshLambertMaterial{{color: #FF0000}},
-                new t.MeshLambertMaterial{{color: #FF0000}},
-                new t.MeshLambertMaterial{{color: #FF0000}},
+                new t.MeshBasicMaterial({color: #FF0000})
                 ];
+*/
 
 // This is called when the document is ready. We'll show a simple start
 // screen then when the user is ready we'll start the main animation loop.
@@ -77,6 +70,7 @@ var animate = function() {
 };
 
 var render = function() {
+    console.log("rendering");
     //TODO
 }
 
@@ -86,7 +80,7 @@ var setup = function() {
                     new t.CubeGeometry(mapWidth * unitsize, 10, maplength * unitsize),
                     new t.MeshLambertMaterial('#F4A460'));
     scene.add(floor);
-
+    /*
     var cube = new t.CubeGeometry(unitsize, wallheight, unitsize);
     // Let's create the walls
     for (var i = 0; i < mapWidth; i++) {
@@ -103,7 +97,7 @@ var setup = function() {
             }
         }
     }
-
+    */
     var directionalLight1 = new t.DirectionalLight(0xF7EFBE, 0.7);
     directionalLight1.position.set(0.5, 1, 0.5);
     scene.add(directionalLight1);
