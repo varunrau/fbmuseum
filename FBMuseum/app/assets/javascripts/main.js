@@ -2,7 +2,7 @@
 var aspectRatio = window.innerWidth / window.innerHeight;
 var unitsize = 250;
 var wallheight = unitsize;
-var walkspeed = 100;
+var walkspeed = 1000;
 var lookspeed = .045;
 var maplength = 10;
 var mapLength = mapLength;
@@ -123,3 +123,15 @@ var setup = function() {
     directionalLight2.position.set(-0.5, -1, -0.5);
     scene.add(directionalLight2);
 };
+
+
+function sector(vector) {
+    var x = Math.floor((vector.x + unitsize) / 2 / unitsize + mapWidth/2);
+    var z = Math.floor((vector.z + unitsize) / 2 / unitsize + mapWidth/2);
+    return {x: x, z: z};
+}
+
+function collision(vector) {
+    var sec = sector(vector);
+    return map[sec.x][sec.z] > 0;
+}
