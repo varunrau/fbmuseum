@@ -28,25 +28,12 @@ var mouse = { x: 0, y: 0};
 //new t.MeshLambertMaterial({color: 0xEDCBA0,
 
 var photos = [
-                new t.MeshLambertMaterial({color: 0xEDCBA0,}),
-                new t.MeshLambertMaterial({color: 0xEDCBA0,}),
-                new t.MeshLambertMaterial({color: 0xEDCBA0,}),
-                new t.MeshLambertMaterial({color: 0xEDCBA0,}),
-                new t.MeshLambertMaterial({color: 0xEDCBA0,}),
-                new t.MeshLambertMaterial({color: 0xEDCBA0,}),
-                new t.MeshLambertMaterial({color: 0xEDCBA0,}),
-                new t.MeshLambertMaterial({color: 0xEDCBA0,}),
-                new t.MeshLambertMaterial({color: 0xEDCBA0,}),
-                new t.MeshLambertMaterial({color: 0xEDCBA0,}),
-                new t.MeshLambertMaterial({color: 0xEDCBA0,}),
-                new t.MeshLambertMaterial({color: 0xEDCBA0,}),
-                new t.MeshLambertMaterial({color: 0xEDCBA0,}),
-                new t.MeshLambertMaterial({color: 0xEDCBA0,}),
-                new t.MeshLambertMaterial({color: 0xEDCBA0,}),
-                new t.MeshLambertMaterial({color: 0xEDCBA0,}),
-                new t.MeshLambertMaterial({color: 0xEDCBA0,}),
-                new t.MeshLambertMaterial({color: 0xEDCBA0,}),
-                new t.MeshLambertMaterial({color: 0xEDCBA0,}),
+                new t.MeshLambertMaterial({map: t.ImageUtils.loadTexture('/assets/p1.jpg'),}),
+                new t.MeshLambertMaterial({map: t.ImageUtils.loadTexture('/assets/p2.jpg'),}),
+                new t.MeshLambertMaterial({map: t.ImageUtils.loadTexture('/assets/p3.jpg'),}),
+                new t.MeshLambertMaterial({map: t.ImageUtils.loadTexture('/assets/p1.jpg'),}),
+                new t.MeshLambertMaterial({map: t.ImageUtils.loadTexture('/assets/p1.jpg'),}),
+                new t.MeshLambertMaterial({map: t.ImageUtils.loadTexture('/assets/p1.jpg'),}),
                 ];
 
 // This is called when the document is ready. We'll show a simple start
@@ -54,8 +41,7 @@ var photos = [
 $(document).ready(function() {
     //$('body').append('<div id="start-page">Are you Ready?</div>');
     //$('start-page').css({width: window.innerWidth, height: window.innerHeight}).one('click', function(e) {
-        //e.preventDefault();
-        //$(this).fadeOut();
+        //e.preventDefault(); //$(this).fadeOut();
         start();
         animate();
     //});
