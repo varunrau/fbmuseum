@@ -22,6 +22,19 @@ var t = THREE;
 var scene, cam, renderer, controls, clock, projector, model, skin;
 var mouse = { x: 0, y: 0};
 
+var photos = [
+                new t.MeshLambertMaterial({color: #FF0000}),
+                new t.MeshLambertMaterial({color: #FF0000}),
+                new t.MeshLambertMaterial({color: #FF0000}),
+                new t.MeshLambertMaterial({color: #FF0000}),
+                new t.MeshLambertMaterial({color: #FF0000}),
+                new t.MeshLambertMaterial{{color: #FF0000}},
+                new t.MeshLambertMaterial{{color: #FF0000}},
+                new t.MeshLambertMaterial{{color: #FF0000}},
+                new t.MeshLambertMaterial{{color: #FF0000}},
+                new t.MeshLambertMaterial{{color: #FF0000}},
+                ];
+
 // This is called when the document is ready. We'll show a simple start
 // screen then when the user is ready we'll start the main animation loop.
 $(document).ready(function() {
